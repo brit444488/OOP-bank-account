@@ -1,5 +1,5 @@
 class BankAccount:
-    def __init__(self, int_rate, balance):
+    def __init__(self, int_rate, balance,):
         self.int_rate = int_rate
         self.balance = balance
 
@@ -43,4 +43,42 @@ print("--------------")
 
 bankTwo = BankAccount(0.04, 500)
 bankTwo.deposit(20).deposit(40).withdraw(50).withdraw(100).withdraw(30).withdraw(130).yield_interest().display_account_info()
+
+
+
+class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+        # self.account = BankAccount(int_rate=0.02, balance=0)
+        self.account = {
+            "bankOne" : BankAccount(.02,1000),
+            "bankTwo" : BankAccount(.05,3000)
+        }
+
+    def display_user_balance(self):
+        print(f"User: {self.name}, Bank One: {self.account['bankOne'].display_account_info()}")
+        print(f"User: {self.name}, Bank Two: {self.account['bankTwo'].display_account_info()}")
+        return self
+
+    def make_deposit(self,amount):
+        self.account += amount
+        return(self)
+
+    def make_withdraw(self,amount):
+        self.account -= amount
+        return(self)
+
+print("---------")
+
+brittany = User("brittany", "brit69@aol.com")
+brittany.account['bankOne'].deposit(100)
+brittany.account['bankOne'].withdraw(150)
+
+
+
+
+
+
+
 
